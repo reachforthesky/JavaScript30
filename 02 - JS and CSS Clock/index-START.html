@@ -84,6 +84,7 @@
       //calculate and set seconds hand rotation
       const seconds = now.getSeconds();
       const secondsDegrees = ((seconds * 6) + 90);
+      //remove transition at 59 second mark to prevent snapping
       if(seconds == 59){
         secondHand.style.transition = "all 0"
         setTimeout(() => {
@@ -103,9 +104,7 @@
       const hourDegrees = ((hours * 30) + (mins * .5) + 90);
       hourHand.style.transform = `rotate(${hourDegrees}deg)`;
 
-      if(seconds == 0){
-        secondHand.style.transition = "all 0.05s"
-      }
+      
     }
 
     setInterval(setDate, 1000)
